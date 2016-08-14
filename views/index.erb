@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+<body>
+  <div class="container">
+    <form class="form-signin">
+      <h2 class="form-signin-heading">Paste Todoist iCalendar URL</h2>
+      <input type="text" id="inputUrl" class="form-control" placeholder="Todoist iCalendar URL" required="" autofocus="" value="" placeholder="https://ext.todoist.com/Export/icalTodoist..."/>
+      <h2 class="form-signin-heading">Use this URL for Calendar app</h2>
+      <input type="text" id="outputUrl" class="form-control" placeholder="New calendar URL" readonly="true" onclick="this.select();" />
+    </form>
+  </div>
+  <script>
+    $(function() {
+      $("#inputUrl").on('change', function(e) {
+        console.log(e)
+        e.preventDefault();
+        $("#outputUrl").val(document.location.href + "cal?url=" + escape(e.target.value));
+      })
+    });
+  </script>
+</body>
+</html>
